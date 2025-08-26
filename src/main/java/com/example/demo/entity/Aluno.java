@@ -17,8 +17,19 @@ public class Aluno {
     private String nome;
     private String email;
     private String senha;
+    private String bio;
     private Date dataNasc;
 
+    public Aluno(){}
+
+    public Aluno(long id, String nome, String email, String senha, String bio, Date dataNasc) {
+        this.id = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.bio = bio;
+        this.dataNasc = dataNasc;
+    }
 
     public String getNome() {
         return nome;
@@ -59,5 +70,14 @@ public class Aluno {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
 
 }
