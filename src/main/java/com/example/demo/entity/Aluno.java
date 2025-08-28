@@ -13,12 +13,29 @@ public class Aluno {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String nome;
     private String email;
     private String senha;
     private Date dataNasc;
 
+    public Aluno(){
+    }
+
+    public Aluno(Long id, String nome, String email, String senha, Date dataNasc) {
+        this.id = id;
+
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.dataNasc = dataNasc;
+    }
+
+    public Aluno(Long id, String email, String senha) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+    }
 
     public String getNome() {
         return nome;
@@ -26,14 +43,6 @@ public class Aluno {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getSenha() {
@@ -52,12 +61,20 @@ public class Aluno {
         this.dataNasc = dataNasc;
     }
 
-    public long getId() {
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
-
 }
