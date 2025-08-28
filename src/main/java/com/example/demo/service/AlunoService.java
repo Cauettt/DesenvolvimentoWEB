@@ -15,15 +15,15 @@ public class AlunoService {
     @Autowired
     private AlunoRepository alunoRepository;
 
-    private List<Aluno> findAllAlunos(){
+    public List<Aluno> findAllAlunos(){
         return alunoRepository.findAll();
     }
 
-    private Optional<Aluno> findAlunoById(Long id){
+    public Optional<Aluno> findAlunoById(Long id){
         return alunoRepository.findById(id);
     }
 
-    private Aluno saveAluno(Aluno aluno){
+    public Aluno saveAluno(Aluno aluno){
         return alunoRepository.save(aluno);
     }
 
@@ -32,12 +32,16 @@ public class AlunoService {
     }
 
     private Optional<Aluno> updateAluno(Aluno updateAluno, Long id){
-        return alunoRepository.findById(id).map(aluno ->
-        {aluno.setNome(updateAluno.getNome());
-        aluno.setDataNasc(updateAluno.getDataNasc());
-        aluno.setEmail(updateAluno.getEmail());
-        aluno.setSenha(updateAluno.getSenha());
-        return alunoRepository.save(aluno);});
+        return Optional.of(alunoRepository.findById(id).map(aluno ->
+        {
+            aluno.setNome(updateAluno.getNome());
+            aluno.setDataNasc(updateAluno.getDataNasc());
+            aluno.setEmail(updateAluno.getEmail());
+            aluno.setSenha(updateAluno.getSenha());
+            return alunoRepository.save(aluno);
+        }).orElseThrow(() -> new RuntimeException("Aluno não existe")));
+
+
     }
 
 }
